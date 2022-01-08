@@ -1,5 +1,8 @@
+
 class FillerClass {
-    public FillerClass(){
+    public static FillerClass filler = null;
+
+    private FillerClass(){
         this.message("Object was created!");
     }
 
@@ -10,13 +13,19 @@ class FillerClass {
     public void message(String message){
         System.out.println(message);
     }
+
+    public static FillerClass getInstance(){
+        if (filler == null)
+            filler = new FillerClass();
+        return filler;
+    }
 }
 
 public class Main{
     public static void main(String[] args) {
 
-        //creating an object as class doesn't follow singleton pattern!
-        FillerClass filler = new FillerClass();
+        //getting object with getInstance() method as the class follows singleton pattern
+        FillerClass filler = FillerClass.getInstance();
 
         filler.message("Hello world!");
     }
