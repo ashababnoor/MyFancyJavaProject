@@ -1,3 +1,5 @@
+import java.util.Random;
+
 class FillerClass {
     public FillerClass(){
         this.message("Object was created!");
@@ -10,6 +12,13 @@ class FillerClass {
     public void message(String message){
         System.out.println(message);
     }
+
+    public void messageWithRandomNumber(){
+        Random random = new Random();
+        int number = random.nextInt();
+
+        System.out.println("Here is a random number: " + number);
+    }
 }
 
 public class Main{
@@ -19,5 +28,6 @@ public class Main{
         FillerClass filler = new FillerClass();
 
         filler.message("Hello world!");
+        filler.messageWithRandomNumber();
     }
 }
