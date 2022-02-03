@@ -1,7 +1,7 @@
-import java.util.Random;
-
 class FillerClass {
-    public FillerClass(){
+    public static FillerClass filler = null;
+
+    private FillerClass(){
         this.message("Object was created!");
     }
 
@@ -13,21 +13,19 @@ class FillerClass {
         System.out.println(message);
     }
 
-    public void messageWithRandomNumber(){
-        Random random = new Random();
-        int number = random.nextInt();
-
-        System.out.println("Here is a random number: " + number);
+    public static FillerClass getInstance(){
+        if (filler == null)
+            filler = new FillerClass();
+        return filler;
     }
 }
 
 public class Main{
     public static void main(String[] args) {
 
-        //creating an object as class doesn't follow singleton pattern!
-        FillerClass filler = new FillerClass();
+        //getting object with getInstance() method as the class follows singleton pattern
+        FillerClass filler = FillerClass.getInstance();
 
         filler.message("Hello world!");
-        filler.messageWithRandomNumber();
     }
 }
